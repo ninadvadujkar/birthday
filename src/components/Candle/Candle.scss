@@ -1,0 +1,227 @@
+.candle {
+  background-color: #7B020B;
+  width: 16px;
+  height: 50px;
+  border-radius: 8px / 4px;
+  top: -20px;
+  left: 50%;
+  margin-left: -8px;
+  z-index: 10;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: lighten(#7B020B, 10%);
+  }
+
+  &.candle1 {
+    left: 10%;
+  }
+
+  &.candle2 {
+    top: -30px;
+    left: 20%;
+  }
+
+  &.candle3 {
+    top: -37px;
+    left: 30%;
+  }
+
+  &.candle4 {
+    top: -40px;
+    left: 40%;
+  }
+
+  &.candle5 {
+    top: -40px;
+    left: 50%;
+  }
+
+  &.candle6 {
+    top: -40px;
+    left: 60%;
+  }
+
+  &.candle7 {
+    top: -38px;
+    left: 70%;
+  }
+
+  &.candle8 {
+    top: -30px;
+    left: 80%;
+  }
+
+  &.candle9 {
+    top: -20px;
+    left: 90%;
+  }
+
+  &.candle10 {
+    top: 0px;
+    left: 95%;
+  }
+
+  &.candle11 {
+    top: 20px;
+    left: 90%;
+  }
+
+  &.candle12 {
+    top: 25px;
+    left: 80%;
+  }
+
+  &.candle13 {
+    top: 30px;
+    left: 70%;
+  }
+
+  &.candle14 {
+    top: 35px;
+    left: 60%;
+  }
+
+  &.candle15 {
+    top: 35px;
+    left: 50%;
+  }
+
+  &.candle16 {
+    top: 35px;
+    left: 40%;
+  }
+
+  &.candle17 {
+    top: 30px;
+    left: 30%;
+  }
+
+  &.candle18 {
+    top: 25px;
+    left: 20%;
+  }
+
+  &.candle19 {
+    top: 10px;
+    left: 10%;
+  }
+}
+
+.flame {
+  position: absolute;
+  background-color: orange;
+  width: 15px;
+  height: 35px;
+  border-radius: 10px 10px 10px 10px / 25px 25px 10px 10px;
+  top: -34px;
+  left: 50%;
+  margin-left: -7.5px;
+  z-index: 10;
+  box-shadow:
+    0 0 10px rgba(orange, 0.5),
+    0 0 20px rgba(orange, 0.5),
+    0 0 60px rgba(orange, 0.5),
+    0 0 80px rgba(orange, 0.5);
+  transform-origin: 50% 90%;
+  animation: flicker 1s ease-in-out alternate infinite;
+
+  &.blowing {
+    animation: flicker 1s ease-in-out alternate infinite, blowing 0.5s linear 1 normal forwards;
+  }
+
+  &.blown {
+    position: absolute;
+    background-color: black;
+    width: 1px;
+    height: 15px;
+    border-radius: initial;
+    top: -10px;
+    left: 50%;
+    margin-left: initial;
+    animation: none;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1px;
+      height: 1px;
+      background-color: gray;
+    }
+  }
+
+  
+}
+
+.wick {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  background-color: black;
+  width: 1px;
+  height: 15px;
+}
+
+@keyframes flicker {
+  0% {
+    transform: skewX(5deg);
+    box-shadow:
+      0 0 10px rgba(orange, 0.2),
+      0 0 20px rgba(orange, 0.2),
+      0 0 60px rgba(orange, 0.2),
+      0 0 80px rgba(orange, 0.2)
+  }
+
+  25% {
+    transform: skewX(-5deg);
+    box-shadow:
+      0 0 10px rgba(orange, 0.5),
+      0 0 20px rgba(orange, 0.5),
+      0 0 60px rgba(orange, 0.5),
+      0 0 80px rgba(orange, 0.5)
+  }
+
+  50% {
+    transform: skewX(10deg);
+    box-shadow:
+      0 0 10px rgba(orange, 0.3),
+      0 0 20px rgba(orange, 0.3),
+      0 0 60px rgba(orange, 0.3),
+      0 0 80px rgba(orange, 0.3)
+  }
+
+  75% {
+    transform: skewX(-10deg);
+    box-shadow:
+      0 0 10px rgba(orange, 0.4),
+      0 0 20px rgba(orange, 0.4),
+      0 0 60px rgba(orange, 0.4),
+      0 0 80px rgba(orange, 0.4)
+  }
+
+  100% {
+    transform: skewX(5deg);
+    box-shadow:
+      0 0 10px rgba(orange, 0.5),
+      0 0 20px rgba(orange, 0.5),
+      0 0 60px rgba(orange, 0.5),
+      0 0 80px rgba(orange, 0.5)
+  }
+}
+
+@keyframes blowing {
+  from {
+    transform: rotateX(0deg);
+  }
+
+  to {
+    transform: rotateX(90deg);
+  }
+}
