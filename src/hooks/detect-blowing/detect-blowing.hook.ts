@@ -19,10 +19,6 @@ const useDetectBlowing = () => {
   }, []);
 
   useEffect(() => {
-    console.log('blowState', blowState);
-  }, [blowState]);
-
-  useEffect(() => {
     (async () => start())();
   }, [start]);
 

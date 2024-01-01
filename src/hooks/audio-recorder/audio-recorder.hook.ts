@@ -17,7 +17,6 @@ const useAudioRecorder = () => {
 
   const intiateRecorder = useCallback(async () => {
     try {
-      console.log('about to');
       // let us initiate the recorder here
       if (!navigator.mediaDevices.getUserMedia) {
         throw new Error('getUserMedia not supported by browser!');
