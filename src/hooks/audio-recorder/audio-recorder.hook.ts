@@ -12,7 +12,7 @@ const useAudioRecorder = () => {
 
   const getAudioPeakLevel = useCallback((analyzer: AnalyserNode, array: Uint8Array) => {
     analyzer.getByteTimeDomainData(array);
-    return array.reduce((max, current) => Math.max(max, Math.abs(current - 127)), 0) / 128;  
+    return array.reduce((max, current) => Math.max(max, Math.abs(current - 127)), 0) / 128;
   }, []);
 
   const intiateRecorder = useCallback(async () => {
