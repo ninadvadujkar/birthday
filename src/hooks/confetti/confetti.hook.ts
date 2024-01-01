@@ -3,7 +3,7 @@ import { useCallback, useState } from 'react';
 export const useConfetti = () => {
   const [isDone, setIsDone] = useState(false);
 
-  const duration = 5 * 1000;
+  const duration = 10 * 1000;
   const animationEnd = Date.now() + duration;
   const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 

@@ -5,6 +5,7 @@ import { useConfetti } from '../../hooks/confetti/confetti.hook';
 import { useContext, useEffect } from 'react';
 import { UserNameContext } from '../../contexts/user-name.context';
 import { useNavigate } from 'react-router-dom';
+import Song from '../../components/Song/Song';
 
 const WhoopWhoop = () => {
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ const WhoopWhoop = () => {
           {isDone && <button type="button" className="btn btn-success btn-reset" onClick={handleReset}>I wanna do it again!</button>}
         </div>
       </div>
+      {blowState !== BlowState.INITIAL && <Song />}
     </div>
   </>);
 };
