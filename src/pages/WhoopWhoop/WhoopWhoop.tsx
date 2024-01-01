@@ -48,6 +48,7 @@ const WhoopWhoop = () => {
           <Cake blowState={blowState} />
         </div>
         <div className="button-container">
+          {blowState !== BlowState.INITIAL && <div className="wish">Hope you have a great year filled with amazing moments! Onwards and upwards 🥳</div>}
           {isDone && <button type="button" className="btn btn-success btn-reset" onClick={handleReset}>I wanna do it again!</button>}
         </div>
       </div>
