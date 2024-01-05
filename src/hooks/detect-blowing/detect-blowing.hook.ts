@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { useAudioRecorder } from '../audio-recorder/audio-recorder.hook';
 
 export enum BlowState {
@@ -8,8 +8,7 @@ export enum BlowState {
 }
 
 const useDetectBlowing = () => {
-  const { intiateRecorder, getAudioPeakLevel } = useAudioRecorder();
-  const [blowState, setBlowState] = useState(BlowState.INITIAL);
+  const { intiateRecorder, getAudioPeakLevel, blowState, setBlowState, hasMicrophonePermission } = useAudioRecorder();
   const intervalRef = useRef([0]);
 
   const start = useCallback(async () => {
@@ -45,7 +44,11 @@ const useDetectBlowing = () => {
     }));
   }, [getAudioPeakLevel]);
 
-  return { start, stop, blowState };
+  const blowCandles = () => {
+    setBlowState(BlowState.BLOWING);
+  };
+
+  return { start, stop, blowCandles, blowState, hasMicrophonePermission };
 };
 
 export {

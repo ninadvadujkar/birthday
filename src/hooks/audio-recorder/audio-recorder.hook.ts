@@ -1,6 +1,10 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
+import { BlowState } from '../detect-blowing/detect-blowing.hook';
 
 const useAudioRecorder = () => {
+  const [blowState, setBlowState] = useState(BlowState.INITIAL);
+  const [hasMicrophonePermission, setHasMicrophonePermission] = useState(false);
+
   const createAudioAnalyzer = useCallback((stream: MediaStream): AnalyserNode => {
     // Create an audio context and connect the stream source to an analyzer node
     const context = new AudioContext();
@@ -30,14 +34,16 @@ const useAudioRecorder = () => {
       // The array we will put sound wave data in
       const array = new Uint8Array(analyzer.fftSize);
   
+      setHasMicrophonePermission(true);
       return { analyzer, array };
     } catch (error) {
-      console.error(error);
+      setHasMicrophonePermission(false);
+      console.error('No microphone permission provided');
       return { analyzer: null, array: null };
     }
   }, [createAudioAnalyzer]);
 
-  return { intiateRecorder, getAudioPeakLevel };
+  return { intiateRecorder, getAudioPeakLevel, blowState, setBlowState, hasMicrophonePermission };
 };
 
 export {

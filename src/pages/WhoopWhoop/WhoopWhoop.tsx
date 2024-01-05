@@ -10,7 +10,7 @@ import Song from '../../components/Song/Song';
 const WhoopWhoop = () => {
   const navigate = useNavigate();
   const { userName } = useContext(UserNameContext);
-  const { blowState, stop, start } = useDetectBlowing();
+  const { blowState, hasMicrophonePermission, stop, start, blowCandles } = useDetectBlowing();
   const { isDone, initiateFireworks, setIsDone } = useConfetti();
 
   useEffect(() => {
@@ -37,10 +37,19 @@ const WhoopWhoop = () => {
       <div className="whoopwhoop-flex-container">
         <div className="heading-container">
           {blowState !== BlowState.INITIAL && <h1 className="heading">Happy Birthday {userName}! 🎉</h1>}
-          {blowState === BlowState.INITIAL &&
+          {blowState === BlowState.INITIAL && hasMicrophonePermission &&
             <>
               <div className="note">It's your birthday! Go ahead and blow the candles!</div>
               <div className="note" style={{ marginTop: '10px', fontStyle: 'italic' }}>If blowing into the microphone doesn't work, just shout! 😝</div>
+            </>
+          }
+          {blowState === BlowState.INITIAL && !hasMicrophonePermission &&
+            <>
+              <div className="note">Looks like you have not provided microphone permission yet.
+                If you don't provide the permission, you cannot blow the candles, unfortunately.
+                In that case you can use the button below to blow the candles.
+              </div>
+              <button type="button" className="btn btn-success btn-reset" onClick={blowCandles}>Blow candles!</button>
             </>
           }
         </div>

@@ -33,7 +33,8 @@ const Welcome = () => {
           </form>
         </div>
         <div className="note-container">
-          <div>Note: Please provide microphone permission on the next screen. The app requires this permission so that you can enjoy it to the fullest! Don't worry, it does not store any information 😊</div>
+          <div>Note: Please provide microphone permission on the next screen.</div>
+          <div>The app requires this permission so that you can enjoy it to the fullest! Don't worry, it does not store any information, not even your name. 😊</div>
         </div>
       </div>
     </div>
