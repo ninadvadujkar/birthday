@@ -5,7 +5,7 @@ export const useConfetti = () => {
 
   const duration = 10 * 1000;
   const animationEnd = Date.now() + duration;
-  const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+  const defaults = { startVelocity: 5, spread: 360, ticks: 0, zIndex: 0 };
 
   const randomInRange = (min: number, max: number) => {
     return Math.random() * (max - min) + min;
@@ -20,7 +20,7 @@ export const useConfetti = () => {
         return clearInterval(interval);
       }
 
-      const particleCount = 50 * (timeLeft / duration);
+      const particleCount = 5 * (timeLeft / duration);
 
       // since particles fall down, start a bit higher than random
       window.confetti(
