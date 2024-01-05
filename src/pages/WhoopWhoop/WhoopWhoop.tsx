@@ -32,36 +32,39 @@ const WhoopWhoop = () => {
     setIsDone(false);
   };
 
+  const notInitialState = blowState !== BlowState.INITIAL;
+  const isInitialState = blowState === BlowState.INITIAL;
+
   return (<>
     <div className="container">
       <div className="whoopwhoop-flex-container">
         <div className="heading-container">
-          {blowState !== BlowState.INITIAL && <h1 className="heading">Happy Birthday {userName}! 🎉</h1>}
-          {blowState === BlowState.INITIAL && hasMicrophonePermission &&
+          {<h1 className={`heading ${notInitialState ? 'visible': ''}`}>Happy Birthday {userName}! 🎉</h1>}
+          {isInitialState && hasMicrophonePermission &&
             <>
               <div className="note">It's your birthday! Go ahead and blow the candles!</div>
               <div className="note" style={{ marginTop: '10px', fontStyle: 'italic' }}>If blowing into the microphone doesn't work, just shout! 😝</div>
             </>
           }
-          {blowState === BlowState.INITIAL && !hasMicrophonePermission &&
-            <>
-              <div className="note">Looks like you have not provided microphone permission yet.
-                If you don't provide the permission, you cannot blow the candles, unfortunately.
-                In that case you can use the button below to blow the candles.
-              </div>
-              <button type="button" className="btn btn-success btn-reset" onClick={blowCandles}>Blow candles!</button>
-            </>
+          {isInitialState && !hasMicrophonePermission &&
+            <div className="note">Looks like you have not provided microphone permission yet.
+              If you don't provide the permission, you cannot blow the candles, unfortunately.
+              In that case you can use the button below to blow the candles.
+            </div>
           }
         </div>
         <div className="cake-container">
           <Cake blowState={blowState} />
         </div>
         <div className="button-container">
-          {blowState !== BlowState.INITIAL && <div className="wish">Hope you have a great year filled with amazing moments! Onwards and upwards 🥳</div>}
+          {notInitialState && <div className="wish">Hope you have a great year filled with amazing moments! Onwards and upwards 🥳</div>}
           {isDone && <button type="button" className="btn btn-success btn-reset" onClick={handleReset}>I wanna do it again!</button>}
+          {isInitialState && !hasMicrophonePermission &&
+            <button type="button" className="btn btn-success btn-reset" onClick={blowCandles}>Blow candles!</button>
+          }
         </div>
       </div>
-      {blowState !== BlowState.INITIAL && <Song />}
+      {notInitialState && <Song />}
     </div>
   </>);
 };

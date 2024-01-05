@@ -9,6 +9,10 @@ const Welcome = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!userName) {
+      alert('Please enter a name!');
+      return;
+    }
     navigate('/whoopwhoop');
   };
 
