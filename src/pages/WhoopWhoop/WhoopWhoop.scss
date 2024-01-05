@@ -14,15 +14,10 @@
   font-family: cursive;
   font-size: 40px;
   font-weight: bold;
-  transform: translateY(-10000%);
   transition: transform 1s ease-in-out;
   background: -webkit-linear-gradient(in hsl longer hue 45deg, red 0 0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  &.visible {
-    transform: translateY(0);
-  }
 }
 
 .note {

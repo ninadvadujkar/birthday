@@ -39,7 +39,7 @@ const WhoopWhoop = () => {
     <div className="container">
       <div className="whoopwhoop-flex-container">
         <div className="heading-container">
-          {<h1 className={`heading ${notInitialState ? 'visible': ''}`}>Happy Birthday {userName}! 🎉</h1>}
+          {notInitialState && <h1 className="heading">Happy Birthday {userName}! 🎉</h1>}
           {isInitialState && hasMicrophonePermission &&
             <>
               <div className="note">It's your birthday! Go ahead and blow the candles!</div>
