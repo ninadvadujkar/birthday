@@ -46,12 +46,6 @@ const WhoopWhoop = () => {
               <div className="note" style={{ marginTop: '10px', fontStyle: 'italic' }}>If blowing into the microphone doesn't work, just shout! 😝</div>
             </>
           }
-          {isInitialState && !hasMicrophonePermission &&
-            <div className="note">Looks like you have not provided microphone permission yet.
-              If you don't provide the permission, you cannot blow the candles, unfortunately.
-              In that case you can use the button below to blow the candles.
-            </div>
-          }
         </div>
         <div className="cake-container">
           <Cake blowState={blowState} />
@@ -59,6 +53,12 @@ const WhoopWhoop = () => {
         <div className="button-container">
           {notInitialState && <div className="wish">Hope you have a great year filled with amazing moments! Onwards and upwards 🥳</div>}
           {isDone && <button type="button" className="btn btn-success btn-reset" onClick={handleReset}>I wanna do it again!</button>}
+          {isInitialState && !hasMicrophonePermission &&
+            <div className="note">Looks like you have not provided microphone permission yet.
+              If you don't provide the permission, you cannot blow the candles, unfortunately.
+              In that case you can use the button below to blow the candles.
+            </div>
+          }
           {isInitialState && !hasMicrophonePermission &&
             <button type="button" className="btn btn-success btn-reset" onClick={blowCandles}>Blow candles!</button>
           }
