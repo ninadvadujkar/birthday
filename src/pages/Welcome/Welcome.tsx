@@ -33,7 +33,7 @@ const Welcome = () => {
                 onChange={(evt) => handleChangeUserName(evt.target.value)}
               />
             </div>
-            <button type="submit" className="btn btn-primary">Let's goooo!</button>
+            <button type="submit" className="btn btn-primary" style={{ float: 'right' }}>Let's goooo!</button>
           </form>
         </div>
         <div className="note-container">
